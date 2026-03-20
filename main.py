@@ -1,6 +1,7 @@
 from src.wineProject import logger
 from src.wineProject.pipeline.data_ingestion import DataIngestionPipeline
 from src.wineProject.pipeline.data_validation import DataValidationPipeline
+from src.wineProject.pipeline.data_transformation import DataTransformationPipeline
 
 STAGE_NAME = "Data Ingestion Stage"
 
@@ -22,6 +23,18 @@ if __name__ == "__main__":
         logger.info(f">>>>>>> Stage {STAGE_NAME} started <<<<<<<")
         data_validation_pipeline = DataValidationPipeline()
         data_validation_pipeline.initiate_data_validation()
+        logger.info(f">>>>>>> Stage {STAGE_NAME} completed <<<<<<<\n\nx==========x")
+    except Exception as e:
+        logger.exception(e)
+        
+        
+STAGE_NAME = "Data Transformation Stage"
+
+if __name__ == "__main__":
+    try:
+        logger.info(f">>>>>>> Stage {STAGE_NAME} started <<<<<<<")
+        data_transformation_pipeline = DataTransformationPipeline()
+        data_transformation_pipeline.initiate_data_transformation()
         logger.info(f">>>>>>> Stage {STAGE_NAME} completed <<<<<<<\n\nx==========x")
     except Exception as e:
         logger.exception(e)
